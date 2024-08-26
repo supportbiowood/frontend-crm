@@ -1,0 +1,38 @@
+@import '../abstracts/_abstracts-dir';
+
+.pop-up-alert {
+  display: grid;
+  gap: rem(20px);
+  padding: rem(20px 0);
+
+  &__header {
+    margin: 20px 0px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__header-text {
+    display: flex;
+    justify-content: center;
+    gap: rem(10px);
+    align-items: center;
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px 0px 0px 0px;
+    gap: rem(20px)
+  }
+  &__groupBtn {
+    margin: 30px 0px 0px 0px;
+    display: flex;
+  }
+
+  @include respond-above('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-above('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,44 @@
+.project-add {
+  &__title {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    margin: 16px 0;
+  }
+
+  &__body-subheader {
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  &__body-subheader-flex {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__body-subheader-flex > div {
+    width: fit-content;
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  @include respond-below("sm") {
+    &__body-subheader-flex {
+      flex-direction: column;
+
+      & div:first-child {
+        margin-bottom: 16px;
+      }
+
+      & div {
+        width: 100% !important;
+      }
+    }
+  }
+}

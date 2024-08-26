@@ -1,0 +1,89 @@
+.card-contact {
+  cursor: pointer;
+  &__container,
+  &__bank-container {
+    border: 1px;
+    background: $light;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+
+  &__container {
+    padding: 10px 20px;
+    margin-bottom: 16px;
+  }
+
+  &__bank-container {
+    padding: 30px 20px;
+  }
+
+  &__right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: auto;
+    gap: 10px;
+    h4 {
+      margin: 0;
+    }
+  }
+
+  &__image-user {
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  &__topic,
+  &__bank-title {
+    text-align: center;
+    background-color: $color2;
+    color: #425a70;
+    border-radius: 3px;
+    padding: 0px 10px;
+    border-radius: 3px;
+  }
+
+  &__bank-title {
+    width: fit-content;
+  }
+
+  &__image-preview {
+    background-color: $mercury;
+    width: 100px;
+    height: 100px;
+    border: 3px dashed $explosive-grey;
+    border-radius: 4px;
+  }
+
+  &__bank {
+    display: grid;
+    gap: 16px;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  &__bank-account,
+  &__bank-account-id {
+    display: flex;
+  }
+
+  &__bank-account-title,
+  &__bank-account-id-title {
+    margin-right: 16px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.15px;
+  }
+
+  &__bank-account-subtitle,
+  &__bank-account-id-subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.15px;
+  }
+}

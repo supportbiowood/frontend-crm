@@ -1,0 +1,71 @@
+//color
+$green-pea: #246527;
+$vista-blue: #8fcbb1;
+
+//primary
+$primary: #419644;
+$light: #fff;
+$black: #000;
+
+//complementary
+$complementary: #964193;
+
+//triadic
+$wedgewood: #419396;
+$victoria: #444196;
+
+//analogous
+$apple: #699641;
+$ocean-green: #41966e;
+
+//utility
+$thunderbird: #b71c1c;
+
+//font
+$silver: #bebebe;
+
+//box-message
+$explosive-grey: #c4c4c4;
+$mercury: #e5e5e5;
+$gallery: #eeeeee;
+$seashell: #f1f1f1;
+$alabaster: #f8f8f8;
+
+//permission-tag
+$color1: #425A70;
+$color2: #E4E7EB;
+
+//schedule
+$today: #E9F6EA;
+$weekend: #FCFCFC;
+
+// Map of breakpoints
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+// Grid components height
+$footer-height: (
+  sm: 200px,
+  md: 200px,
+  lg: 300px,
+  xl: 350px,
+);
+
+$header-height: (
+  sm: 56px,
+  md: 96px,
+  lg: 96px,
+  xl: 110px,
+  // sm: 56px),
+  // md: 96px),
+  // lg: 120px),
+  // xl: 144px),
+);
+
+// Grid template column
+$primary-template-column-min-xl: 1280px;
+$primary-template-column-max-xl: 1920px;

@@ -1,0 +1,10 @@
+.good-issue {
+  &__radio {
+    margin: 0 0 16px 20px;
+  }
+
+  &__radio-wrapper {
+    display: grid;
+    gap: 20px;
+  }
+}

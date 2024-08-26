@@ -1,0 +1,68 @@
+#tableAccountingdata {
+  white-space: nowrap;
+  width: 100%;
+}
+
+#tableAccountingdata thead {
+  background-color: #8fcbb1;
+  // text-align: center;
+}
+
+#tableAccountingdata td {
+  padding: 10px 10px;
+  text-align: center;
+}
+
+#tableAccountingdata th {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+#tableAccountingdata th > p {
+  padding: 5px 20px;
+  text-align: center;
+}
+
+#inventory td {
+  padding: 10px 20px;
+  // text-align: center;
+}
+
+#inventory {
+  white-space: nowrap;
+  width: 100%;
+}
+
+#inventory thead {
+  background-color: #8fcbb1;
+  // text-align: center;
+}
+
+#inventory tr {
+  border-bottom: 1px solid #bebebe;
+}
+
+#inventory td {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+#tabledata {
+  white-space: nowrap;
+  width: 100%;
+}
+
+#tabledata thead {
+  background-color: #8fcbb1;
+  // text-align: center;
+}
+
+#tabledata td {
+  padding: 5px 10px;
+  text-align: center;
+}
+
+#tabledata th {
+  padding: 10px 20px;
+  text-align: center;
+}

@@ -1,0 +1,73 @@
+.progressbar {
+  width: 100%;
+
+  &__project {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 50px;
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+
+    & li {
+      list-style: none;
+      display: inline-block;
+      width: 20%;
+      position: relative;
+      text-align: center;
+    }
+    & li:before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      padding: 15px;
+      line-height: 30px;
+      border: 4px solid #ddd;
+      border-radius: 100%;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      background: linear-gradient(0deg, #e5e5e5, #e5e5e5), #ffffff;
+    }
+    & li:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      background-color: #ddd;
+      top: 28px;
+      left: -50%;
+      z-index: -1;
+    }
+    & li:first-child:after {
+      content: none;
+    }
+    & li.active:before {
+      background: url(/images/check.png) rgb(201, 191, 247);
+      background-size: 35px 25px;
+      background-repeat: no-repeat;
+      background-blend-mode: multiply;
+      background-position: center center;
+      border: 4px solid #c9bff7;
+    }
+    & li.active + li:after {
+      background: linear-gradient(0deg, #c9bff6, #c9bff6), #ffffff;
+    }
+  }
+
+  @include respond-below("lg") {
+    &__project {
+      display: grid;
+      grid-template-columns: unset;
+      margin-bottom: 16px;
+    }
+
+    &__wrapper {
+      margin-bottom: 16px;
+    }
+  }
+}

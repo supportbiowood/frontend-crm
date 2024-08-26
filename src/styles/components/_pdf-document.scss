@@ -1,0 +1,291 @@
+.pdf-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pdf-header-left {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+}
+
+.pdf-header-left :first-child {
+  margin-right: 24px;
+}
+
+.pdf-header-left-title {
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+.pdf-header-title {
+  font-weight: bold;
+  font-size: 9px;
+  letter-spacing: 0.15px;
+}
+
+.pdf-header-subtitle {
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 0.15px;
+}
+
+.pdf-header-info-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.pdf-header-info {
+  display: flex;
+  gap: 40px;
+}
+
+.pdf-info-title,
+.pdf-info-subtitle {
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.pdf-info-title:not(:last-child),
+.pdf-info-subtitle:not(:last-child) {
+  white-space: nowrap;
+}
+
+.pdf-info-title {
+  font-weight: bold;
+}
+
+.pdf-header-info:first-child {
+  margin-right: 60px;
+}
+
+.pdf-signature-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  padding: 20px 0;
+  width: 100%;
+  page-break-before: auto;
+}
+
+.pdf-signature-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.pdf-signature-right {
+  width: 100%;
+}
+
+.pdf-signature-left-title {
+  display: grid;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 9px;
+}
+
+.pdf-signature-right-title {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+.pdf-signature-right-subtitle {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.15px;
+}
+
+.pdf-signature-left-subtitle {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.pdf-signature-line,
+.pdf-signature-date {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.pdf-signature-sales-order-wrapper,
+.pdf-signature-sales-invoice-wrapper,
+.pdf-signature-payment-receipt-wrapper,
+.pdf-signature-billing-note-wrapper {
+  display: grid;
+  justify-content: center;
+  padding: 80px 0 40px 0;
+}
+
+.pdf-signature-sales-order-left,
+.pdf-signature-payment-receipt-left,
+.pdf-signature-billing-note-left {
+  display: grid;
+  gap: 60px;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.pdf-signature-sales-invoice-left {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+}
+
+#pdftable {
+  width: 100%;
+}
+
+#pdftable > tr {
+  border-bottom: 1px solid rgb(190, 190, 190);
+}
+
+#pdftable > thead {
+  background: #8fcbb1;
+}
+
+#pdftable > thead > th,
+#pdftable > tr > td {
+  padding: 15px 0;
+}
+
+#pdftable > thead > th,
+#pdftable > tr > th,
+#pdftable > tr > td {
+  font-size: 12px;
+  text-align: center;
+}
+
+#pdftable > thead > th:nth-child(2) {
+  width: 200px;
+}
+
+.pdf-item-name {
+  display: grid;
+  grid-template-rows: 0.9fr 0.1fr;
+  grid-gap: 10px;
+  gap: 10px;
+  align-items: center;
+}
+
+.pdf-item-name > div {
+  font-size: 12px;
+}
+
+.pdf-remark-title {
+  font-weight: bold;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.87);
+  margin-bottom: 15px;
+}
+
+.pdf-remark-subtitle {
+  white-space: pre-line;
+  font-size: 12px;
+
+  color: #000000;
+}
+
+.pdf-summary-title {
+  display: grid;
+  justify-content: flex-end;
+  text-align: end;
+  gap: 10px;
+  grid-template-columns: (
+    minmax(min-content, max-content) minmax(8rem, max-content) 20px
+  );
+  white-space: pre-line;
+  font-size: 12px;
+  color: #000000;
+}
+
+.pdf-summary-title-total {
+  font-weight: bold;
+}
+
+.pdf-purchase-itemname-grid {
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+  align-items: center;
+}
+
+#purchase-table-body {
+  font-size: 12px;
+}
+
+#purchase-table-body > tr > td {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.pdf-payment-title {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 14px;
+
+  color: #000000;
+}
+
+.pdf-payment-done {
+  font-weight: bold;
+  font-size: 14px;
+  color: #000000;
+}
+
+.pdf-payment-subtitle1 {
+  font-weight: bold;
+  font-size: 12px;
+
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.pdf-payment-subtitle2 {
+  font-weight: normal;
+  font-size: 12px;
+
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.pdf-payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#pdftablePurchase {
+  width: 100%;
+}
+
+#pdftablePurchase > tr {
+  border-bottom: 1px solid;
+}
+
+#pdftablePurchase > thead > th,
+#pdftablePurchase > tr > th,
+#pdftablePurchase > tr > td {
+  font-size: 12px;
+  text-align: center;
+}
+
+.pdf-summary-container {
+  position: relative;
+}
+
+.pdf-signature-delivery-order {
+  display: grid;
+  grid-gap: 60px;
+  gap: 60px;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+}
+
+@page {
+  size: auto;
+  margin: 15mm 10mm;
+}

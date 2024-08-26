@@ -1,0 +1,230 @@
+.engineer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  &__status {
+    &-draft {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #e5e5e5;
+      color: #333333;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-notApprove {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffa396;
+      color: #b54839;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-wait_job_approve {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #e5e5e5;
+      color: #333333;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-job_approved {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #c4dbfd;
+      color: #1f5bb2;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-queue_accepted {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fce69f;
+      color: #c3762e;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-assigned {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fce69f;
+      color: #c3762e;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-in_progress {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fce69f;
+      color: #c3762e;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-wait_review {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fce69f;
+      color: #c3762e;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-closed {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #c8eddc;
+      color: #246527;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-expired {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffdbba;
+      color: #703600;
+      font-weight: bold;
+      height: 30%;
+    }
+    &-cancelled {
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f1f1f1;
+      color: #9f9f9f;
+      font-weight: bold;
+      height: 30%;
+    }
+  }
+
+  &__badge {
+    &-draft {
+      background-color: #e5e5e5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+    }
+    &-wait_job_approve {
+      background-color: #e5e5e5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+    }
+    &-job_approved {
+      background-color: #c4dbfd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+    }
+    &-queue_accepted {
+      background-color: #fff9e4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+    }
+    &-assigned {
+      background-color: #fff9e4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+    }
+    &-in_progress {
+      background-color: #fff9e4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+    }
+    &-wait_review {
+      background-color: #fff9e4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      border-radius: 50%;
+      height: 8px;
+      width: 8px;
+    }
+  }
+
+  &__heading-container {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__status-wrapper {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__status-icon {
+    width: 20px;
+    height: 20px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    border: 4px solid #ddd;
+    background: linear-gradient(0deg, #e5e5e5, #e5e5e5), #ffffff;
+
+    &-finish {
+      width: 20px;
+      height: 20px;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: url(/images/check.png) rgb(201, 191, 247);
+      background-size: 35px 25px;
+      background-repeat: no-repeat;
+      background-blend-mode: multiply;
+      background-position: center center;
+      border: 4px solid #c9bff7;
+    }
+  }
+}

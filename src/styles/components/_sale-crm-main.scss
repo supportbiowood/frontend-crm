@@ -1,0 +1,18 @@
+.sale-crm-main {
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    text-align: right;
+  }
+
+  &__groupBtn  a:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  //test
+  &__wapper {
+    margin-top: 10px;
+  }
+}
+

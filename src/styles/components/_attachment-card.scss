@@ -1,0 +1,48 @@
+.attachment-card {
+  &__container {
+    border: 1px solid $silver;
+    display: flex;
+    border-radius: 20px;
+    padding: 15px 15px;
+    width: fit-content;
+  }
+
+  &__container-delete {
+    border: 1px solid $silver;
+    display: flex;
+    border-radius: 20px;
+    padding: 15px 15px;
+    width: fit-content;
+    cursor: pointer;
+  }
+
+  &__icon {
+    margin: 0px 20px 0px 0px;
+  }
+
+  &__topic {
+    padding: 6px 10px;
+    background: #d4eee2;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__upload-btn {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 24px;
+  }
+}

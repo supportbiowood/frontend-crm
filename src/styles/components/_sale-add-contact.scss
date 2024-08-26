@@ -1,0 +1,208 @@
+.sale-add-contact {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  &__body {
+    margin-bottom: 16px;
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__btn-wrapper > div:not(:last-child) {
+    margin-right: 16px;
+  }
+
+  &__btn-wrapper > div > button {
+    padding: 6px 44px;
+  }
+
+  &__accordian1-header {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 16px;
+  }
+
+  &__accordian1-left {
+  }
+
+  &__accordian1-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__accordian1-input {
+    all: unset;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  &__accordian1-input-list,
+  &__accordian1-input-list-grid {
+    margin-bottom: 32px;
+  }
+
+  &__accordian1-input-list-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__accordian1-input-title {
+    font-size: 12px;
+    line-height: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 16px;
+  }
+
+  &__accordian1-right-title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  &__accordian1-right-title,
+  &__accordian1-upload-img,
+  &__accordian1-upload-img2 {
+    margin-bottom: 16px;
+  }
+
+  &__accordian1-input-wrapper {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(4, auto);
+  }
+
+  &__accordian1-input-item {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__accordian1-upload-img {
+    height: 250px;
+    width: 250px;
+    background: #e5e5e5;
+    border: 3px dashed #c4c4c4;
+    background-position: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  &__accordian1-upload-img2 {
+    height: 250px;
+    width: 250px;
+    border: none;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  &__accordian1-body-top,
+  &__accordian1-body-bottom {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 32px;
+  }
+
+  &__accordian1-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__accordian2-add-btn {
+    margin-bottom: 16px;
+  }
+
+  &__accordian2-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__accordian3-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__accordian5-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 0 24px 32px;
+  }
+
+  &__accordian5-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 3fr;
+  }
+
+  &__accordian5-body {
+    display: flex;
+    margin-left: 32px;
+  }
+
+  &__accordian5-title {
+    display: flex;
+    align-items: center;
+  }
+
+  &__accordian6-wrapper,
+  &__accordian6-list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__accordian6-wrapper > div:first-child {
+    margin-right: 16px;
+  }
+
+  &__accordian7-wrapper {
+    display: flex;
+  }
+
+  &__accordian7-input-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 4px;
+  }
+
+  &__accordian1-individual-wrapper > div:first-child {
+    margin-bottom: 24px;
+  }
+
+  &__accordian1-individual-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 24px;
+  }
+}
+
+.attachment-delete-btn {
+  display: inline-block;
+  letter-spacing: 0.4px;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.css-1k430x0-MuiButtonBase-root-MuiChip-root {
+  border-radius: 0 !important;
+}
