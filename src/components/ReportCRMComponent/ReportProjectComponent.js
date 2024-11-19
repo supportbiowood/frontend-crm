@@ -137,10 +137,14 @@ const columns = [
     field: "project_deal_value",
 
     renderCell: (params) => {
-      return params.value.toLocaleString(undefined, {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2,
+      if (params.value != null) {
+        return params.value.toLocaleString(undefined, {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
+     
       });
+    }
+    return "-";
     },
   },
   {
@@ -331,7 +335,8 @@ const getWarranty = (warrantyList) => {
 };
 
 const getAddress = (address) => {
-  return `อาคาร/หมู่บ้าน:${address.address_id} เลขที่:${address.house_no} หมู่:${address.village_no} แขวง/ตำบล:${address.sub_district} เขต/อำเภอ:${address.district} จังหวัด:${address.province} รหัสไปรษณีย์:${address.postal_code} ประเทศ:${address.country}`;
+  if (!address) return "-";
+  return `อาคาร/หมู่บ้าน:${address.address_id || "-"} เลขที่:${address.house_no || "-"} หมู่:${address.village_no || "-"} แขวง/ตำบล:${address.sub_district || "-"} เขต/อำเภอ:${address.district || "-"} จังหวัด:${address.province || "-"} รหัสไปรษณีย์:${address.postal_code || "-"} ประเทศ:${address.country || "-"}`;
 };
 
 export default function ReportProjectComponent() {

@@ -38,7 +38,7 @@ export default function SalesProjectCardComponent(props) {
                 >
                   <p className="badge__card-header">{status.name}</p>
                   <p className="badge__card-description">
-                    {totalPrice.toLocaleString()} บาท
+                    {totalPrice ? totalPrice.toLocaleString() : "0"} บาท
                   </p>
                 </div>
                 <div className="badge__pointer">
@@ -103,7 +103,7 @@ export default function SalesProjectCardComponent(props) {
                   <p className="badge__card-header">{card.project_name}</p>
                   <p>ผู้ติดต่อ: {customer_name ? customer_name : "-"}</p>
                   <p>
-                    มูลค่า: {card.project_deal_value.toLocaleString("en-US")}{" "}
+                    มูลค่า: {card.project_deal_value ? card.project_deal_value.toLocaleString("en-US") : "0"}{" "}
                     บาท
                   </p>
                   <p>ลักษณะงาน: {card.project_category}</p>

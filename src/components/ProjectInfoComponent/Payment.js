@@ -405,7 +405,7 @@ export default function Payment(props) {
                 label="อาคาร/หมู่บ้าน"
                 size="small"
                 name="project_billing_address.building"
-                value={props.values.project_billing_address.building}
+                value={props.values.project_billing_address?.building || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
@@ -414,7 +414,7 @@ export default function Payment(props) {
                 label="เลขที่"
                 size="small"
                 name="project_billing_address.house_no"
-                value={props.values.project_billing_address.house_no}
+                value={props.values.project_billing_address?.house_no || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
@@ -423,7 +423,7 @@ export default function Payment(props) {
                 label="หมู่"
                 size="small"
                 name="project_billing_address.village_no"
-                value={props.values.project_billing_address.village_no}
+                value={props.values.project_billing_address?.village_no || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
@@ -432,14 +432,14 @@ export default function Payment(props) {
                 label="ถนน"
                 size="small"
                 name="project_billing_address.road"
-                value={props.values.project_billing_address.road}
+                value={props.values.project_billing_address?.road || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
               />
               <Autocomplete
                 fullWidth
-                value={props.values.project_billing_address.sub_district || ""}
+                value={props.values.project_billing_address?.sub_district || ""}
                 name="project_billing_address.sub_district"
                 onInputChange={(event, newInputValue, reason) => {
                   if (reason === "reset") {
@@ -551,7 +551,7 @@ export default function Payment(props) {
               />
               <Autocomplete
                 fullWidth
-                value={props.values.project_billing_address.district || ""}
+                value={props.values.project_billing_address?.district || ""}
                 name="project_billing_address.district"
                 onInputChange={(event, newInputValue, reason) => {
                   if (reason === "reset") {
@@ -628,7 +628,7 @@ export default function Payment(props) {
               />
               <Autocomplete
                 fullWidth
-                value={props.values.project_billing_address.province || ""}
+                value={props.values.project_billing_address?.province || ""}
                 name="project_billing_address.province"
                 onInputChange={(event, newInputValue, reason) => {
                   if (reason === "reset") {
@@ -708,14 +708,14 @@ export default function Payment(props) {
                 label="รหัสไปรษณีย์"
                 size="small"
                 name="project_billing_address.postal_code"
-                value={props.values.project_billing_address.postal_code}
+                value={props.values.project_billing_address?.postal_code || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
               />
               <Autocomplete
                 fullWidth
-                value={props.values.project_billing_address.country}
+                value={props.values.project_billing_address?.country || ''}
                 name="project_billing_address.country"
                 onChange={(event, newValue) => {
                   if (typeof newValue === "string") {

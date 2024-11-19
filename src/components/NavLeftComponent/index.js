@@ -24,8 +24,8 @@ import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import AddModeratorOutlinedIcon from "@mui/icons-material/AddModeratorOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import GroupsIcon from "@mui/icons-material/Groups";
-import FileUploadIcon from "@mui/icons-material/FileUpload";
+// import GroupsIcon from "@mui/icons-material/Groups";
+// import FileUploadIcon from "@mui/icons-material/FileUpload";
 
 export default function NavTopComponent() {
   return (
@@ -35,20 +35,11 @@ export default function NavTopComponent() {
           <li className="logo">
             <Link to="/" className="nav-link-heading">
               <span className="link-text logo-text">
-                <Link to="/">
-                  <img alt="biowood-logo" src="/logos/biowood-logo.png" />
-                </Link>
+                <img alt="biowood-logo" src="/logos/biowood-logo.png" />
               </span>
               <MenuRoundedIcon />
             </Link>
           </li>
-
-          {/* <li className="nav-item">
-            <Link to="/" className="nav-link main-menu">
-              <HomeOutlinedIcon />
-              <span className="link-text">หน้าแรก</span>
-            </Link>
-          </li> */}
 
           <li className="nav-item">
             <Link to="/sales" className="nav-link main-menu">
@@ -92,8 +83,6 @@ export default function NavTopComponent() {
                   รายงาน
                 </Link>
               </li>
-              {/* <li><Link to="/" className="nav-link"><AddCircleRoundedIcon/> สร้างใบเสนอราคา</Link></li>
-          <li><Link to="/" className="nav-link"><AddCircleRoundedIcon/> สร้างใบถอดแบบ</Link></li> */}
             </ul>
           </li>
 
@@ -284,39 +273,9 @@ export default function NavTopComponent() {
                 </Link>
               </li>
               <li>
-                <Link to="/expense/purchase-invoice" className="nav-link">
+                <Link to="/expense/payment" className="nav-link">
                   <DescriptionOutlinedIcon />
-                  บันทึกซื้อ
-                </Link>
-              </li>
-              <li>
-                <Link to="/expense/payment-made" className="nav-link">
-                  <DescriptionOutlinedIcon />
-                  การชำระเงิน
-                </Link>
-              </li>
-              <li>
-                <Link to="/expense/combined-payment" className="nav-link">
-                  <DescriptionOutlinedIcon />
-                  ใบรวมจ่าย
-                </Link>
-              </li>
-              <li>
-                <Link to="/expense/expenses" className="nav-link">
-                  <DescriptionOutlinedIcon />
-                  บันทึกค่าใช้จ่าย
-                </Link>
-              </li>
-              <li>
-                <Link to="/expense/purchase-return" className="nav-link">
-                  <DescriptionOutlinedIcon />
-                  ใบส่งคืน
-                </Link>
-              </li>
-              <li>
-                <Link to="/expense/debit-note" className="nav-link">
-                  <DescriptionOutlinedIcon />
-                  รับใบลดหนี้
+                  การจ่ายเงิน
                 </Link>
               </li>
               <li>
@@ -333,80 +292,49 @@ export default function NavTopComponent() {
               <AccountBalanceOutlinedIcon />
               <span className="link-text">บัญชี</span>
             </Link>
+            <ul className="sub-menu">
+              <li>
+                <Link to="/accounting/bank" className="nav-link">
+                  <AccountBalanceOutlinedIcon />
+                  ธนาคาร
+                </Link>
+              </li>
+              <li>
+                <Link to="/accounting/report" className="nav-link">
+                  <FindInPageRoundedIcon />
+                  รายงาน
+                </Link>
+              </li>
+            </ul>
           </li>
 
           <li className="nav-item">
             <Link to="/employee" className="nav-link main-menu">
               <PeopleAltOutlinedIcon />
-              <span className="link-text">บัญชีผู้ใช้</span>
+              <span className="link-text">พนักงาน</span>
             </Link>
             <ul className="sub-menu">
-              <li>
-                <Link to="/employee" className="nav-link">
-                  <PeopleAltOutlinedIcon />
-                  บัญชีผู้ใช้
-                </Link>
-              </li>
               <li>
                 <Link to="/employee/permission" className="nav-link">
                   <AddModeratorOutlinedIcon />
-                  จัดการสิทธิ
+                  สิทธิ์การเข้าถึง
                 </Link>
               </li>
               <li>
-                <Link to="/employee/team" className="nav-link">
-                  <GroupsIcon />
-                  จัดการทีม
-                </Link>
-              </li>
-              {/* <li>
-                <Link to="/employee/report" className="nav-link">
-                  <FindInPageRoundedIcon />
-                  รายงาน
-                </Link>
-              </li> */}
-            </ul>
-          </li>
-
-          <li className="nav-item">
-            <Link to="/config" className="nav-link main-menu">
-              <SettingsOutlinedIcon />
-              <span className="link-text">ตั้งค่า</span>
-            </Link>
-            <ul className="sub-menu">
-              <li>
-                <Link to="/config" className="nav-link">
+                <Link to="/employee/shift" className="nav-link">
                   <SettingsOutlinedIcon />
-                  ตั้งค่า
-                </Link>
-              </li>
-              <li>
-                <Link to="/config/importer" className="nav-link">
-                  <FileUploadIcon />
-                  นำเข้าข้อมูล
+                  กำหนดเวลา
                 </Link>
               </li>
             </ul>
           </li>
 
-          {/* <li className="nav-item">
-            <Link to="/logistics" className="nav-link main-menu">
-              <LocalShippingOutlinedIcon />
-              <span className="link-text">ขนส่ง</span>
-            </Link>
-          </li> */}
-
           <li className="nav-item">
-            <Link
-              to="/"
-              className="nav-link main-menu"
-              onClick={() => {
-                removeUserSession();
-                window.location.reload();
-              }}
-            >
+            <Link to="/" className="nav-link">
               <LogoutRoundedIcon />
-              <span className="link-text">ออกจากระบบ</span>
+              <span className="link-text" onClick={() => removeUserSession()}>
+                ออกจากระบบ
+              </span>
             </Link>
           </li>
         </ul>

@@ -217,6 +217,9 @@ const getPaymentType = (type) => {
 };
 
 const getAddress = (address) => {
+  if (!address){
+    return "ไม่มีข้อมูลที่อยู่" ;
+  }
   return `อาคาร/หมู่บ้าน:${address.address_id} เลขที่:${address.house_no} หมู่:${address.village_no} แขวง/ตำบล:${address.sub_district} เขต/อำเภอ:${address.district} จังหวัด:${address.province} รหัสไปรษณีย์:${address.postal_code} ประเทศ:${address.country}`;
 };
 
@@ -262,9 +265,9 @@ export default function ReportContact() {
               contact_payment_type: getPaymentType(
                 contact.contact_payment_type
               ),
-              contact_address: getAddress(contact.contact_address_list[0]),
+              contact_address: getAddress(contact.contact_address_list?.[0] || null),
               contact_registration_address: getAddress(
-                contact.contact_registration_address
+                contact.contact_registration_address || null
               ),
               _contact_createdby_employee:
                 contact._contact_createdby_employee &&

@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -11,7 +12,7 @@ export default function AccountSplitButtonComponent({
   disabledEditButton,
   handleMenuItemClick,
   anchorEl,
-  open,
+  open = false, // ตั้งค่า default เป็น false
   handleOpen,
   handleClose,
   variant,
@@ -45,7 +46,7 @@ export default function AccountSplitButtonComponent({
           "aria-labelledby": "demo-customized-button",
         }}
         anchorEl={anchorEl}
-        open={open}
+        open={open} // ใช้ prop open ที่รับค่า default เป็น false
         onClose={handleClose}
       >
         {options.map((option, index) =>

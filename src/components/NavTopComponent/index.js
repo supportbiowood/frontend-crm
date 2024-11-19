@@ -1,10 +1,9 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getUser, removeUserSession } from "../../adapter/Auth";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Badge from "@mui/material/Badge";
-// import NotificationsIcon from "@mui/icons-material/Notifications";
 import DoneAllOutlinedIcon from "@mui/icons-material/DoneAllOutlined";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
@@ -38,7 +37,9 @@ export default function NavTopComponent() {
           </div>
           <div className="item2" style={{ textAlign: "right" }}>
             <div style={{ display: "inline-block" }}>
-              <Link to={`/employee/${user && user.employee_document_id}`}>
+              <span
+                onClick={() => history.push(`/employee/${user && user.employee_document_id}`)}
+              >
                 <Chip
                   avatar={
                     user && user.employee_img_url ? (
@@ -47,9 +48,7 @@ export default function NavTopComponent() {
                         src={user.employee_img_url}
                       />
                     ) : (
-                      <Avatar
-                        sx={{ width: 24, height: 24, bgcolor: "#2e7d32" }}
-                      >
+                      <Avatar sx={{ width: 24, height: 24, bgcolor: "#2e7d32" }}>
                         {user &&
                           user.employee_firstname &&
                           user.employee_firstname[0]}
@@ -71,17 +70,10 @@ export default function NavTopComponent() {
                     border: "1px solid #bdbdbd",
                   }}
                 />
-              </Link>
-              {/* <Link to={`/notification`}>
-                <Badge
-                  badgeContent={1}
-                  color="success"
-                  style={{ marginRight: "20px" }}
-                >
-                  <NotificationsIcon color="action" />
-                </Badge>
-              </Link> */}
-              <Link to={`/approval`}>
+              </span>
+              <span
+                onClick={() => history.push(`/approval`)}
+              >
                 <Badge
                   badgeContent={1}
                   color="success"
@@ -89,7 +81,7 @@ export default function NavTopComponent() {
                 >
                   <DoneAllOutlinedIcon color="action" />
                 </Badge>
-              </Link>
+              </span>
               <Button
                 style={{ marginLeft: "10px" }}
                 variant="outlined"
@@ -109,32 +101,20 @@ export default function NavTopComponent() {
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static" style={{ background: "#fff" }}>
             <Toolbar>
-              <Link to="/" style={{ color: "#2e7d32" }}>
-                <IconButton
-                  onClick={() => history.push("/")}
-                  size="large"
-                  edge="start"
-                  aria-label="menu"
-                  sx={{ mr: 2 }}
-                >
+              <span
+                onClick={() => history.push("/")}
+                style={{ color: "#2e7d32" }}
+              >
+                <IconButton size="large" edge="start" aria-label="menu" sx={{ mr: 2 }}>
                   <MenuIcon />
                 </IconButton>
-              </Link>
+              </span>
               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <Link to="/">
+                <span onClick={() => history.push("/")}>
                   <img alt="logo" src="/logos/biowood-logo.png" />
-                </Link>
+                </span>
               </Typography>
-              {/* <Link to={`/notification`}>
-                <Badge
-                  badgeContent={1}
-                  color="success"
-                  style={{ marginRight: "20px", marginTop: "6px" }}
-                >
-                  <NotificationsIcon color="action" />
-                </Badge>
-              </Link> */}
-              <Link to={`/approval`}>
+              <span onClick={() => history.push(`/approval`)}>
                 <Badge
                   badgeContent={1}
                   color="success"
@@ -142,14 +122,14 @@ export default function NavTopComponent() {
                 >
                   <DoneAllOutlinedIcon color="action" />
                 </Badge>
-              </Link>
-              <Link to={`/employee/${user && user.employee_id}`}>
+              </span>
+              <span
+                onClick={() => history.push(`/employee/${user && user.employee_id}`)}
+              >
                 <Avatar sx={{ width: 36, height: 36, bgcolor: "#2e7d32" }}>
-                  {user &&
-                    user.employee_firstname &&
-                    user.employee_firstname[0]}
+                  {user && user.employee_firstname && user.employee_firstname[0]}
                 </Avatar>
-              </Link>
+              </span>
             </Toolbar>
           </AppBar>
         </Box>

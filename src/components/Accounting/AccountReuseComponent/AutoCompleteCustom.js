@@ -16,7 +16,6 @@ export default function AutoCompleteCustom({
   return (
     <Autocomplete
       fullWidth
-      autoComplete="off"
       disabled={disabled}
       size="small"
       sx={sx}
@@ -31,6 +30,7 @@ export default function AutoCompleteCustom({
           error={errors}
           helperText={helperText}
           label={label}
+          autoComplete="off"  // ย้าย autoComplete มาที่ TextField แทน
         />
       )}
     />

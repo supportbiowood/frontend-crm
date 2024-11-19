@@ -58,7 +58,7 @@ import {
   deleteUOM,
 } from "./mutation";
 
-export const BASE_URL = `https://wg5qsmzpynesniup6lduegpcom.appsync-api.ap-southeast-1.amazonaws.com/graphql`;
+export const BASE_URL = `http://localhost:8080/graphql`;
 
 function returnAxiosInstance() {
   const axiosInstance = axios.create({
@@ -144,11 +144,11 @@ export function getDocumentID(
   query = generateDocumentID
 ) {
   const variables = {
-    ...generateDocumentIDInput,
+    ...generateDocumentIDInput
   };
   return post("/", {
     query,
-    variables,
+    variables
   });
 }
 

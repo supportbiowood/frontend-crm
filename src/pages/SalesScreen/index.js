@@ -31,7 +31,7 @@ export default function SalesScreen(props) {
           <Switch>
             <Route exact path={`${path}`}>
               <Breadcrumbs separator=">" aria-label="breadcrumb">
-                <BreadcrumbComponent name="การขาย" to="/sales" />
+              <BreadcrumbComponent name="การขาย" to="/sales" breadcrumbKey="sales" />
               </Breadcrumbs>
               <ul className="grid-container-nav-button">
                 <Link to={`${path}/event`}>

@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import ButtonOptionComponent from "../../AccountReuseComponent/ButtonOptionComponent";
 import { Box } from "@mui/system";
 import LatestTransactionComponent from "./LatestTransactionComponent";
-import { postAccount, updateAccount } from "../../../../adapter/Api";
+import { postAccount, updateAccount, getAccountById } from "../../../../adapter/Api";
 import { showSnackbar } from "../../../../redux/actions/snackbarActions";
 
 export default function ChartofAccountsInfo({ add }) {
@@ -32,35 +32,42 @@ export default function ChartofAccountsInfo({ add }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!add) {
-      setIsLoading(false);
-      setChartOfAccount(initialValues);
+    if (!add && id) {
+      // โหลดข้อมูลบัญชีจาก API
+      getAccountById(id)
+        .then((data) => {
+          setChartOfAccount(data); // อัปเดตข้อมูลบัญชี
+          setIsLoading(false); // หยุดโหลด
+        })
+        .catch((err) => {
+          console.error(err);
+          dispatch(showSnackbar("error", "ไม่สามารถโหลดข้อมูลได้"));
+          setIsLoading(false); // หยุดโหลดแม้เจอข้อผิดพลาด
+        });
+    } else {
+      setIsLoading(false); // ถ้าเป็นโหมด add ไม่ต้องโหลดข้อมูล
     }
-  }, [add]);
+  }, [add, id,dispatch]);
 
   const formik = useFormik({
-    initialValues: id
-      ? {
-          ...chartOfAccountData,
-        }
-      : chartOfAccountData,
-    enableReinitialize: true,
+    initialValues: chartOfAccountData, // ตั้งค่าให้ตรงกับข้อมูลที่โหลดมา
+    enableReinitialize: true, // อนุญาตให้รีเซ็ตค่าของ form เมื่อค่า chartOfAccountData เปลี่ยน
     validateOnChange: false,
     validateOnBlur: false,
     validationSchema: validationSchema,
     onSubmit: (values) => {
       setIsLoading(true);
-      const postPayload = {
-        ...values,
-      };
+      const postPayload = { ...values };
       if (id) {
         updateAccount(id, postPayload)
           .then((data) => {
             console.log(data);
             setIsLoading(false);
+            dispatch(showSnackbar("success", "บันทึกข้อมูลสำเร็จ"));
           })
           .catch((err) => {
-            dispatch(showSnackbar("error", `บันทึกร่างไม่สำเร็จ`));
+            console.error(err);
+            dispatch(showSnackbar("error", "บันทึกร่างไม่สำเร็จ"));
             setIsLoading(false);
           });
       } else {
@@ -68,14 +75,17 @@ export default function ChartofAccountsInfo({ add }) {
           .then((data) => {
             console.log(data);
             setIsLoading(false);
+            dispatch(showSnackbar("success", "บันทึกข้อมูลสำเร็จ"));
           })
           .catch((err) => {
-            dispatch(showSnackbar("error", `บันทึกร่างไม่สำเร็จ`));
+            console.error(err);
+            dispatch(showSnackbar("error", "บันทึกร่างไม่สำเร็จ"));
             setIsLoading(false);
           });
       }
     },
   });
+
   //<================= Change Tab ===============>
   const [tabValue, setTabValue] = useState(0);
   const handleChange = (_, newValue) => {
@@ -137,15 +147,14 @@ export default function ChartofAccountsInfo({ add }) {
           <BreadcrumbComponent name="ลูกหนี้" to="/accounting/chart/ลูกหนี้" />
         )}
       </Breadcrumbs>
-      {add && (
+      {add ? (
         <div>
           <h1 className="accounting__header__title">สร้างบัญชี</h1>
           <div>
             <AccountDetailComponent formik={formik} values={formik.values} />
           </div>
         </div>
-      )}
-      {!add && (
+      ) : (
         <div>
           <Box
             sx={{

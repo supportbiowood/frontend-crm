@@ -41,7 +41,7 @@ export default function AccountingScreen(props) {
         <main>
           {/* ใช้ Switch เพื่อแสดงคอมโพเนนต์ที่ตรงกับเส้นทางที่กำหนด */}
           <Switch>
-             {/* เส้นทางหลักที่ป้องกันด้วย ProtectedRoute โดยใช้ path ปัจจุบัน */}
+             {/* เส้นทางหลักที่ป้องกันด้วย Route โดยใช้ path ปัจจุบัน */}
             <Route exact path={`${path}`}>
               {/* แสดง Breadcrumbs เพื่อการนำทางแบบลำดับขั้น */}
               <Breadcrumbs separator="›" aria-label="breadcrumb">

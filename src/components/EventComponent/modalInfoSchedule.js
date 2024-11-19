@@ -198,45 +198,45 @@ export default function ModalInfoSchedule({
               event_status: selectedEvent.event_status || "",
               event_plan_start_date: selectedEvent.event_plan_start_date
                 ? new Date(
-                    moment(selectedEvent.event_plan_start_date, "X").tz(
-                      "Asia/Bangkok"
-                    )
+                  moment(selectedEvent.event_plan_start_date, "X").tz(
+                    "Asia/Bangkok"
                   )
+                )
                 : "",
               event_plan_end_date: selectedEvent.event_plan_end_date
                 ? new Date(
-                    moment(selectedEvent.event_plan_end_date, "X").tz(
-                      "Asia/Bangkok"
-                    )
+                  moment(selectedEvent.event_plan_end_date, "X").tz(
+                    "Asia/Bangkok"
                   )
+                )
                 : "",
               event_schedule_start_date: selectedEvent.event_schedule_start_date
                 ? new Date(
-                    moment(selectedEvent.event_schedule_start_date, "X").tz(
-                      "Asia/Bangkok"
-                    )
+                  moment(selectedEvent.event_schedule_start_date, "X").tz(
+                    "Asia/Bangkok"
                   )
+                )
                 : "",
               event_schedule_end_date: selectedEvent.event_schedule_end_date
                 ? new Date(
-                    moment(selectedEvent.event_schedule_end_date, "X").tz(
-                      "Asia/Bangkok"
-                    )
+                  moment(selectedEvent.event_schedule_end_date, "X").tz(
+                    "Asia/Bangkok"
                   )
+                )
                 : "",
               event_checkin_start_date: selectedEvent.event_checkin_start_date
                 ? new Date(
-                    moment(selectedEvent.event_checkin_start_date, "X").tz(
-                      "Asia/Bangkok"
-                    )
+                  moment(selectedEvent.event_checkin_start_date, "X").tz(
+                    "Asia/Bangkok"
                   )
+                )
                 : "",
               event_checkin_dest_date: selectedEvent.event_checkin_dest_date
                 ? new Date(
-                    moment(selectedEvent.event_checkin_dest_date, "X").tz(
-                      "Asia/Bangkok"
-                    )
+                  moment(selectedEvent.event_checkin_dest_date, "X").tz(
+                    "Asia/Bangkok"
                   )
+                )
                 : "",
               event_topic: selectedEvent.event_topic || "",
               event_id: selectedEvent.event_id || "",
@@ -278,7 +278,7 @@ export default function ModalInfoSchedule({
               (err.response &&
                 err.response.data.message &&
                 err.response.data.message) ||
-                "เกิดข้อผิดพลาด"
+              "เกิดข้อผิดพลาด"
             )
           );
         });
@@ -363,7 +363,7 @@ export default function ModalInfoSchedule({
           showSnackbar(
             "error",
             (err.response.data.message && err.response.data.message) ||
-              "เกิดข้อผิดพลาด"
+            "เกิดข้อผิดพลาด"
           )
         );
         setSubmitting(false);
@@ -424,7 +424,7 @@ export default function ModalInfoSchedule({
           showSnackbar(
             "error",
             (err.response.data.message && err.response.data.message) ||
-              "เกิดข้อผิดพลาด"
+            "เกิดข้อผิดพลาด"
           )
         );
         setSubmitting(false);
@@ -516,7 +516,7 @@ export default function ModalInfoSchedule({
             showSnackbar(
               "error",
               (err.response.data.message && err.response.data.message) ||
-                "เกิดข้อผิดพลาด"
+              "เกิดข้อผิดพลาด"
             )
           );
           setSubmitting(false);
@@ -564,7 +564,7 @@ export default function ModalInfoSchedule({
             showSnackbar(
               "error",
               (err.response.data.message && err.response.data.message) ||
-                "เกิดข้อผิดพลาด"
+              "เกิดข้อผิดพลาด"
             )
           );
           setSubmitting(false);
@@ -655,7 +655,7 @@ export default function ModalInfoSchedule({
                   showSnackbar(
                     "error",
                     (err.response.data.message && err.response.data.message) ||
-                      "เกิดข้อผิดพลาด"
+                    "เกิดข้อผิดพลาด"
                   )
                 );
                 setSubmitting(false);
@@ -685,22 +685,20 @@ export default function ModalInfoSchedule({
               fullScreen={fullScreen}
             >
               <DialogTitle>
-                <h2
+                <div
                   style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
                   }}
                 >
-                  แผนการทำงาน
-                  <IconButton
-                    type="button"
-                    onClick={() => handleClose(resetForm)}
-                  >
+                  <h2>แผนการทำงาน</h2>
+                  <IconButton type="button" onClick={() => handleClose(resetForm)}>
                     <CloseIcon />
                   </IconButton>
-                </h2>
+                </div>
               </DialogTitle>
+
 
               <DialogContent>
                 <DialogContentText>
@@ -859,153 +857,153 @@ export default function ModalInfoSchedule({
 
                           {values.event_status === "planned"
                             ? showScheduled && (
-                                <div className="grid-container-50-50">
-                                  <div>
-                                    <LocalizationProvider
-                                      dateAdapter={AdapterDateFns}
-                                    >
-                                      <DateTimePicker
-                                        label="วันที่เริ่ม (นัดหมาย)"
-                                        disabled={
-                                          values.event_status === "scheduled" ||
-                                          values.event_status === "checkin" ||
-                                          values.event_status === "cancelled" ||
-                                          values.event_status === "finished"
-                                        }
-                                        value={values.event_schedule_start_date}
-                                        onChange={(e) => {
-                                          setFieldValue(
-                                            "event_schedule_start_date",
-                                            e
-                                          );
+                              <div className="grid-container-50-50">
+                                <div>
+                                  <LocalizationProvider
+                                    dateAdapter={AdapterDateFns}
+                                  >
+                                    <DateTimePicker
+                                      label="วันที่เริ่ม (นัดหมาย)"
+                                      disabled={
+                                        values.event_status === "scheduled" ||
+                                        values.event_status === "checkin" ||
+                                        values.event_status === "cancelled" ||
+                                        values.event_status === "finished"
+                                      }
+                                      value={values.event_schedule_start_date}
+                                      onChange={(e) => {
+                                        setFieldValue(
+                                          "event_schedule_start_date",
+                                          e
+                                        );
+                                        setFieldValue(
+                                          "event_schedule_end_date",
+                                          moment(e).add(2, "hour")
+                                        );
+                                      }}
+                                      ampm={false}
+                                      inputFormat="dd/MM/yyyy HH:mm"
+                                      renderInput={(params) => (
+                                        <TextField
+                                          {...params}
+                                          name="event_schedule_start_date"
+                                        />
+                                      )}
+                                    />
+                                  </LocalizationProvider>
+                                </div>
+                                <div>
+                                  <LocalizationProvider
+                                    dateAdapter={AdapterDateFns}
+                                  >
+                                    <DateTimePicker
+                                      minDate={
+                                        values.event_schedule_start_date
+                                      }
+                                      label="วันที่สิ้นสุด (นัดหมาย)"
+                                      disabled={
+                                        values.event_status === "scheduled" ||
+                                        values.event_status === "checkin" ||
+                                        values.event_status === "cancelled" ||
+                                        values.event_status === "finished"
+                                      }
+                                      value={values.event_schedule_end_date}
+                                      onChange={(e) => {
+                                        if (
+                                          e > values.event_schedule_start_date
+                                        )
                                           setFieldValue(
                                             "event_schedule_end_date",
-                                            moment(e).add(2, "hour")
+                                            e
                                           );
-                                        }}
-                                        ampm={false}
-                                        inputFormat="dd/MM/yyyy HH:mm"
-                                        renderInput={(params) => (
-                                          <TextField
-                                            {...params}
-                                            name="event_schedule_start_date"
-                                          />
-                                        )}
-                                      />
-                                    </LocalizationProvider>
-                                  </div>
-                                  <div>
-                                    <LocalizationProvider
-                                      dateAdapter={AdapterDateFns}
-                                    >
-                                      <DateTimePicker
-                                        minDate={
-                                          values.event_schedule_start_date
-                                        }
-                                        label="วันที่สิ้นสุด (นัดหมาย)"
-                                        disabled={
-                                          values.event_status === "scheduled" ||
-                                          values.event_status === "checkin" ||
-                                          values.event_status === "cancelled" ||
-                                          values.event_status === "finished"
-                                        }
-                                        value={values.event_schedule_end_date}
-                                        onChange={(e) => {
-                                          if (
-                                            e > values.event_schedule_start_date
-                                          )
-                                            setFieldValue(
-                                              "event_schedule_end_date",
-                                              e
-                                            );
-                                        }}
-                                        ampm={false}
-                                        inputFormat="dd/MM/yyyy HH:mm"
-                                        renderInput={(params) => (
-                                          <TextField
-                                            {...params}
-                                            name="event_schedule_end_date"
-                                          />
-                                        )}
-                                      />
-                                    </LocalizationProvider>
-                                  </div>
+                                      }}
+                                      ampm={false}
+                                      inputFormat="dd/MM/yyyy HH:mm"
+                                      renderInput={(params) => (
+                                        <TextField
+                                          {...params}
+                                          name="event_schedule_end_date"
+                                        />
+                                      )}
+                                    />
+                                  </LocalizationProvider>
                                 </div>
-                              )
+                              </div>
+                            )
                             : values.event_schedule_end_date && (
-                                <div className="grid-container-50-50">
-                                  <div>
-                                    <LocalizationProvider
-                                      dateAdapter={AdapterDateFns}
-                                    >
-                                      <DateTimePicker
-                                        label="วันที่เริ่ม (นัดหมาย)"
-                                        disabled={
-                                          values.event_status === "scheduled" ||
-                                          values.event_status === "checkin" ||
-                                          values.event_status === "cancelled" ||
-                                          values.event_status === "finished"
-                                        }
-                                        value={values.event_schedule_start_date}
-                                        onChange={(e) => {
-                                          setFieldValue(
-                                            "event_schedule_start_date",
-                                            e
-                                          );
+                              <div className="grid-container-50-50">
+                                <div>
+                                  <LocalizationProvider
+                                    dateAdapter={AdapterDateFns}
+                                  >
+                                    <DateTimePicker
+                                      label="วันที่เริ่ม (นัดหมาย)"
+                                      disabled={
+                                        values.event_status === "scheduled" ||
+                                        values.event_status === "checkin" ||
+                                        values.event_status === "cancelled" ||
+                                        values.event_status === "finished"
+                                      }
+                                      value={values.event_schedule_start_date}
+                                      onChange={(e) => {
+                                        setFieldValue(
+                                          "event_schedule_start_date",
+                                          e
+                                        );
+                                        setFieldValue(
+                                          "event_schedule_end_date",
+                                          moment(e).add(2, "hour")
+                                        );
+                                      }}
+                                      ampm={false}
+                                      inputFormat="dd/MM/yyyy HH:mm"
+                                      renderInput={(params) => (
+                                        <TextField
+                                          {...params}
+                                          name="event_schedule_start_date"
+                                        />
+                                      )}
+                                    />
+                                  </LocalizationProvider>
+                                </div>
+                                <div>
+                                  <LocalizationProvider
+                                    dateAdapter={AdapterDateFns}
+                                  >
+                                    <DateTimePicker
+                                      minDate={
+                                        values.event_schedule_start_date
+                                      }
+                                      label="วันที่สิ้นสุด (นัดหมาย)"
+                                      disabled={
+                                        values.event_status === "scheduled" ||
+                                        values.event_status === "checkin" ||
+                                        values.event_status === "cancelled" ||
+                                        values.event_status === "finished"
+                                      }
+                                      value={values.event_schedule_end_date}
+                                      onChange={(e) => {
+                                        if (
+                                          e > values.event_schedule_start_date
+                                        )
                                           setFieldValue(
                                             "event_schedule_end_date",
-                                            moment(e).add(2, "hour")
+                                            e
                                           );
-                                        }}
-                                        ampm={false}
-                                        inputFormat="dd/MM/yyyy HH:mm"
-                                        renderInput={(params) => (
-                                          <TextField
-                                            {...params}
-                                            name="event_schedule_start_date"
-                                          />
-                                        )}
-                                      />
-                                    </LocalizationProvider>
-                                  </div>
-                                  <div>
-                                    <LocalizationProvider
-                                      dateAdapter={AdapterDateFns}
-                                    >
-                                      <DateTimePicker
-                                        minDate={
-                                          values.event_schedule_start_date
-                                        }
-                                        label="วันที่สิ้นสุด (นัดหมาย)"
-                                        disabled={
-                                          values.event_status === "scheduled" ||
-                                          values.event_status === "checkin" ||
-                                          values.event_status === "cancelled" ||
-                                          values.event_status === "finished"
-                                        }
-                                        value={values.event_schedule_end_date}
-                                        onChange={(e) => {
-                                          if (
-                                            e > values.event_schedule_start_date
-                                          )
-                                            setFieldValue(
-                                              "event_schedule_end_date",
-                                              e
-                                            );
-                                        }}
-                                        ampm={false}
-                                        inputFormat="dd/MM/yyyy HH:mm"
-                                        renderInput={(params) => (
-                                          <TextField
-                                            {...params}
-                                            name="event_schedule_end_date"
-                                          />
-                                        )}
-                                      />
-                                    </LocalizationProvider>
-                                  </div>
+                                      }}
+                                      ampm={false}
+                                      inputFormat="dd/MM/yyyy HH:mm"
+                                      renderInput={(params) => (
+                                        <TextField
+                                          {...params}
+                                          name="event_schedule_end_date"
+                                        />
+                                      )}
+                                    />
+                                  </LocalizationProvider>
                                 </div>
-                              )}
+                              </div>
+                            )}
 
                           {values.event_status &&
                             values.event_status === "planned" && (
@@ -1740,11 +1738,11 @@ export default function ModalInfoSchedule({
                                 label={
                                   values._event_lastupdate
                                     ? `วันที่อัพเดทล่าสุด: ${moment(
-                                        values._event_lastupdate,
-                                        "X"
-                                      )
-                                        .tz("Asia/Bangkok")
-                                        .format("DD/MM/YYYY, HH:MM")}`
+                                      values._event_lastupdate,
+                                      "X"
+                                    )
+                                      .tz("Asia/Bangkok")
+                                      .format("DD/MM/YYYY, HH:MM")}`
                                     : "วันที่อัพเดทล่าสุด: -"
                                 }
                                 variant="outlined"
@@ -1756,13 +1754,11 @@ export default function ModalInfoSchedule({
                               className="myChip"
                             >
                               <Chip
-                                label={`ผู้สร้าง: ${
-                                  values.employee_firstname &&
+                                label={`ผู้สร้าง: ${values.employee_firstname &&
                                   values.employee_firstname
-                                } ${
-                                  values.employee_lastname &&
+                                  } ${values.employee_lastname &&
                                   values.employee_lastname
-                                }`}
+                                  }`}
                                 variant="outlined"
                               />
                             </Stack>

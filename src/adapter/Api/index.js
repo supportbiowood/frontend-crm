@@ -8,10 +8,10 @@ import { createOption } from "../Utils";
 let BASE_URL;
 if (process.env.REACT_APP_ENVIRONMENT.trim() === "development") {
   // BASE_URL = "https://api-dev.biowoodthailand.com/v1";
-  BASE_URL = "https://api.biowoodthailand.com/v1";
+  BASE_URL = "http://localhost:8080/v1"; // สำหรับพัฒนาในเครื่อง
   console.log("running on development");
 } else if (process.env.REACT_APP_ENVIRONMENT.trim() === "production") {
-  BASE_URL = "https://api.biowoodthailand.com/v1";
+  BASE_URL = "https://api.biowoodthailand.com/v1"; // สำหรับการใช้งานจริง
   console.log("running on production");
 }
 
@@ -84,6 +84,7 @@ async function checkToken() {
 export function get(url) {
   if (!checkToken()) return;
   const axios = returnAxiosInstance();
+  console.log('URL: ', url);
   return axios.get(url);
 }
 

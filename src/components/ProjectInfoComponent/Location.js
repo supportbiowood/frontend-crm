@@ -122,7 +122,7 @@ export default function Location(props) {
                 label="อาคาร/หมู่บ้าน"
                 size="small"
                 name="project_address.building"
-                value={props.values.project_address.building}
+                value={props.values.project_address?.building || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
@@ -139,7 +139,7 @@ export default function Location(props) {
                 label="เลขที่"
                 size="small"
                 name="project_address.house_no"
-                value={props.values.project_address.house_no}
+                value={props.values.project_address?.house_no || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
@@ -156,7 +156,7 @@ export default function Location(props) {
                 label="หมู่"
                 size="small"
                 name="project_address.village_no"
-                value={props.values.project_address.village_no}
+                value={props.values.project_address?.village_no || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
@@ -173,7 +173,7 @@ export default function Location(props) {
                 label="ถนน"
                 size="small"
                 name="project_address.road"
-                value={props.values.project_address.road}
+                value={props.values.project_address?.road || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
@@ -188,7 +188,7 @@ export default function Location(props) {
               />
               <Autocomplete
                 fullWidth
-                value={props.values.project_address.sub_district || ""}
+                value={props.values.project_address?.sub_district || ""}
                 name="project_address.sub_district"
                 onInputChange={(event, newInputValue, reason) => {
                   if (reason === "reset") {
@@ -312,7 +312,7 @@ export default function Location(props) {
               />
               <Autocomplete
                 fullWidth
-                value={props.values.project_address.district || ""}
+                value={props.values.project_address?.district || ""}
                 name="project_address.district"
                 onInputChange={(event, newInputValue, reason) => {
                   if (reason === "reset") {
@@ -396,7 +396,7 @@ export default function Location(props) {
 
               <Autocomplete
                 fullWidth
-                value={props.values.project_address.province || ""}
+                value={props.values.project_address?.province || ""}
                 onInputChange={(event, newInputValue, reason) => {
                   if (reason === "reset") {
                     return;
@@ -483,7 +483,7 @@ export default function Location(props) {
                 label="รหัสไปรษณีย์"
                 size="small"
                 name="project_address.postal_code"
-                value={props.values.project_address.postal_code}
+                value={props.values.project_address?.postal_code || ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
@@ -498,7 +498,7 @@ export default function Location(props) {
               />
               <Autocomplete
                 fullWidth
-                value={props.values.project_address.country}
+                value={props.values.project_address?.country || ''}
                 name="project_address.country"
                 onChange={(event, newValue) => {
                   if (typeof newValue === "string") {

@@ -230,9 +230,10 @@ const columns = [
         const removedComma = splitType
           .filter((channel) => channel.length > 0)
           .map((channelMap) => channelMap.replace(",", ""));
-        return removedComma.map((channel) => {
+        return removedComma.map((channel, index) => {
           return (
             <Chip
+            key={index}
               label={channel}
               color="success"
               variant="outlined"
@@ -260,9 +261,10 @@ const columns = [
     renderCell: (params) => {
       return (
         params.value &&
-        params.value.split(",").map((tag) => {
+        params.value.split(",").map((tag,index) => {
           return (
             <Chip
+              key={index}
               label={tag}
               color="success"
               variant="outlined"

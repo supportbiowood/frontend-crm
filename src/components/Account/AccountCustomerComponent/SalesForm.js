@@ -133,7 +133,7 @@ export default function SalesForm({
     if (
       allProjectAddress.length > 0 &&
       allProjectAddress.some(
-        (address) => address.address_name.trim().length > 0
+        (address) => address?.address_name?.trim().length > 0
       ) &&
       allContactAddress.length === 0
     ) {
@@ -142,7 +142,7 @@ export default function SalesForm({
     if (
       allContactAddress.length > 0 &&
       allContactAddress.some(
-        (address) => address.address_name.trim().length > 0
+        (address) => address?.address_name?.trim().length > 0
       ) &&
       allProjectAddress.length === 0
     ) {
@@ -292,6 +292,7 @@ export default function SalesForm({
         }}
       >
         <Grid container spacing={2}>
+          {/* Autocomlete สำหรับเลือกโครงการ */}
           <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
             <Autocomplete
               disablePortal
@@ -299,7 +300,7 @@ export default function SalesForm({
               id="billing_info.project_id"
               name="billing_info.project_id"
               size="small"
-              options={projectOptions}
+              options={projectOptions || []}
               freeSolo
               value={projectValue}
               onChange={(_, value) => {
@@ -332,7 +333,7 @@ export default function SalesForm({
                 }
               }}
               sx={{ width: "100%" }}
-              getOptionLabel={(option) => option.project_name}
+              getOptionLabel={(option) => option.project_name || ""}
               isOptionEqualToValue={(option, value) =>
                 option.project_id === value.project_id
               }
@@ -344,7 +345,11 @@ export default function SalesForm({
                 );
               }}
               renderInput={(params) => (
-                <TextField {...params} label="เลือกโครงการ" />
+                <TextField 
+                {...params} 
+                label="เลือกโครงการ" 
+                helperText={!projectOptions ? "กำลังโหลดข้อมูล..." : ""}
+                />
               )}
             />
           </Grid>
@@ -356,9 +361,9 @@ export default function SalesForm({
               disabled={disabled}
               size="small"
               freeSolo
-              options={contactOptions}
+              options={contactOptions || []}
               value={contactValue}
-              getOptionLabel={(option) => option.contact_name}
+              getOptionLabel={(option) => option?.contact_name || ""}
               isOptionEqualToValue={(option, value) =>
                 option.contact_id === value.contact_id
               }
@@ -399,7 +404,7 @@ export default function SalesForm({
               renderInput={(params) => (
                 <TextField
                   error={error}
-                  helperText={error}
+                  helperText={error || (!contactOptions ? "กำลังโหลดข้อมูล..." : "")}
                   {...params}
                   label="เลือกลูกค้า *"
                 />
@@ -465,7 +470,7 @@ export default function SalesForm({
             />
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
-            {allEmail.length > 0 ? (
+            {allEmail.length && allEmail.length > 0 ? (
               <FormControl fullWidth size="small">
                 <InputLabel disabled={disabled} id="billing_info.email">
                   E-mail
@@ -513,7 +518,7 @@ export default function SalesForm({
       >
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
-            {allPhone.length > 0 ? (
+            {allPhone.length && allPhone.length > 0 ? (
               <FormControl fullWidth size="small">
                 <InputLabel disabled={disabled} id="billing_info.phone">
                   เบอร์โทรศัพท์
@@ -577,7 +582,7 @@ export default function SalesForm({
           <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
             {allAddress &&
             allAddress.some(
-              (address) => address.address_name.trim().length > 0
+              address => address.address_name.trim().length > 0
             ) ? (
               <FormControl fullWidth size="small">
                 <InputLabel disabled={disabled} id="billing_info.address_name">

@@ -178,9 +178,9 @@ export default function AccountDetailComponent({
             </Grid>
           )}
           <Grid container spacing={2} marginBottom={2}>
-            {MainField.map((item) => {
+            {MainField.map((item, index) => {
               return (
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={4} key={index}>
                   <AutoCompleteCustom
                     id={item.id}
                     name={item.name}
@@ -197,9 +197,9 @@ export default function AccountDetailComponent({
             })}
           </Grid>
           <Grid container spacing={2} marginBottom={2}>
-            {SecondField.map((item) => {
+            {SecondField.map((item, index) => {
               return (
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={4} key={index}>
                   <TextFieldCustom
                     id={item.id}
                     name={item.name}
@@ -215,9 +215,9 @@ export default function AccountDetailComponent({
             })}
           </Grid>
           <Grid container spacing={2} marginBottom={2}>
-            {LastField.map((item) => {
+            {LastField.map((item, index) => {
               return (
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={4} key={index}>
                   <AutoCompleteCustom
                     id={item.id}
                     name={item.name}
@@ -261,9 +261,10 @@ export default function AccountDetailComponent({
       </div>
       {!disabled && (
         <div className="accounting__button-layout">
-          {button.map((button) => {
+          {button.map((button, index) => {
             return (
               <ButtonComponent
+                key={index}
                 text={button.text}
                 variant={button.variant}
                 color={button.color}

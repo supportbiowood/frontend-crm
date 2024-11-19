@@ -12,6 +12,9 @@ import {
   toLocaleWithTwoDigits,
   unixToDateWithFormat,
 } from "../../../../../adapter/Utils";
+// import { all } from "async";
+// import { date } from "yup";
+// import { all } from "async";
 
 const columns = [
   {
@@ -81,9 +84,9 @@ export default function QuotationComponent() {
             return {
               ...ele,
               id: i + 1,
-              project_document_id: ele.billing_info?.project_document_id
-                ? ele.billing_info?.project_document_id
-                : "-",
+              project_document_id: ele.billing_info?.project_document_id || "-",
+                // ? ele.billing_info?.project_document_id
+                // : "-",
               contact_name: ele.billing_info?.contact_name,
               total_amount: toLocaleWithTwoDigits(ele.total_amount),
               quotation_issue_date: unixToDateWithFormat(
@@ -97,6 +100,8 @@ export default function QuotationComponent() {
           setAllQuotation(formatData);
           setRows(formatData);
           setIsLoading(false);
+        } else{
+          dispatch(showSnackbar("error", "ไม่สามารถดึงข้อมูลได้")); 
         }
       })
       .catch((err) => {
@@ -107,23 +112,25 @@ export default function QuotationComponent() {
   }, [dispatch]);
 
   useEffect(() => {
-    setLength({
-      draftLength: allQuotation.filter(
-        (data) => data.quotation_status === "draft"
-      ).length,
-      waitApproveLength: allQuotation.filter(
-        (data) => data.quotation_status === "wait_approve"
-      ).length,
-      notApproveLength: allQuotation.filter(
-        (data) => data.quotation_status === "not_approve"
-      ).length,
-      waitAcceptLength: allQuotation.filter(
-        (data) => data.quotation_status === "wait_accept"
-      ).length,
-      acceptedLength: allQuotation.filter(
-        (data) => data.quotation_status === "accepted"
-      ).length,
-    });
+    if (allQuotation.length > 0 ) {
+      setLength({
+        draftLength: allQuotation.filter(
+          (data) => data.quotation_status === "draft"
+        ).length,
+        waitApproveLength: allQuotation.filter(
+          (data) => data.quotation_status === "wait_approve"
+        ).length,
+        notApproveLength: allQuotation.filter(
+          (data) => data.quotation_status === "not_approve"
+        ).length,
+        waitAcceptLength: allQuotation.filter(
+          (data) => data.quotation_status === "wait_accept"
+        ).length,
+        acceptedLength: allQuotation.filter(
+          (data) => data.quotation_status === "accepted"
+        ).length,
+      });
+    }
   }, [allQuotation]);
 
   const filterByTab = (value) => {
@@ -131,47 +138,56 @@ export default function QuotationComponent() {
       return data.quotation_status === value;
     });
     setRows(newData);
-  };
+  }; // eslint-disable-line no-unused-vars
+  
 
   const switchTabHandler = () => {
+    // let newData = [];
     switch (value) {
       case 0:
+        // newData = allQuotation;
         setRows(allQuotation);
         break;
       case 1:
+        // newData = allQuotation.filter((data) => data.quotation_status === "draft");
         filterByTab("draft");
         break;
       case 2:
+        // newData = allQuotation.filter((data) => data.quotation_status === "wait_approve");
         filterByTab("wait_approve");
         break;
       case 3:
+        // newData = allQuotation.filter((data) => data.quotation_status === "not_approve");
         filterByTab("not_approve");
         break;
       case 4:
+        // newData = allQuotation.filter((data) => data.quotation_status === "wait_accept");
         filterByTab("wait_accept");
         break;
       case 5:
+        // newData = allQuotation.filter((data) => data.quotation_status === "accepted");
         filterByTab("accepted");
         break;
       case 6:
         const currentTimestamp = moment().unix();
-        const newData = allQuotation.filter((data) => {
-          return (
-            data.quotation_valid_until_date < currentTimestamp &&
-            data.quotation_status !== "closed"
-          );
-        });
-        setRows(newData);
+      setRows(
+        allQuotation.filter(
+          (data) => data.quotation_valid_until_date < currentTimestamp && data.quotation_status !== "closed"
+        )
+      );
         break;
       case 7:
+        // newData = allQuotation.filter((data) => data.quotation_status === "closed");
         filterByTab("closed");
         break;
       case 8:
+        // newData = allQuotation.filter((data) => data.quotation_status === "cancelled");
         filterByTab("cancelled");
         break;
       default:
         setRows(allQuotation);
     }
+    
   };
 
   const customTabValue = [
@@ -266,8 +282,13 @@ export default function QuotationComponent() {
   };
 
   const onRowDoubleClick = (params) => {
-    let quotation_document_id = params.row.quotation_document_id;
-    history.push("/income/quotation/" + quotation_document_id);
+    if (params.row.quotation_document_id) {
+      history.push(`/income/quotation/${params.row.quotation_document_id}`);
+    } else {
+      dispatch(showSnackbar("error", "ไม่พบเอกสารใบเสนอราคา"))
+    }
+    // let quotation_document_id = params.row.quotation_document_id;
+    
   };
 
   return (

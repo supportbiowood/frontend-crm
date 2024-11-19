@@ -201,7 +201,7 @@ export default function ContactInfoComponent(props) {
                 data.data.data.contact_registration_address,
             }));
           }
-          if (data.data.data.contact_address_list !== []) {
+          if (data.data.data.contact_address_list && data.data.data.contact_address_list.length > 0) {
             setMyValue((prev) => ({
               ...prev,
               contact_address_list: data.data.data.contact_address_list,

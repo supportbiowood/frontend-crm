@@ -105,7 +105,7 @@ export default function Contact(props) {
               <>
                 <div
                   className="grid-container-contact-channel-list"
-                  key={`${value.contact_channel_name} + ${index}`}
+                  key={`${value.contact_channel_name} - ${index}`}
                 >
                   <div>
                     <Autocomplete
