@@ -7,7 +7,7 @@ import { createOption } from "../Utils";
 
 let BASE_URL;
 if (process.env.REACT_APP_ENVIRONMENT.trim() === "development") {
-  // BASE_URL = "http://47.129.207.245/:8080/v1";
+  // BASE_URL = "http://47.129.207.245:8080/v1";
   BASE_URL = "http://47.129.207.245/:8080/v1";
   console.log("running on development");
 } else if (process.env.REACT_APP_ENVIRONMENT.trim() === "production") {
