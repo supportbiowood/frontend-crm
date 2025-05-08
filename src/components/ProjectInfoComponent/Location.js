@@ -122,7 +122,7 @@ export default function Location(props) {
                 label="อาคาร/หมู่บ้าน"
                 size="small"
                 name="project_address.building"
-                value={props.values.project_address.building}
+                value={props.values.project_address ? props.values.project_address.building : ''}
                 onChange={(e) => {
                   props.handleChange(e);
                 }}
