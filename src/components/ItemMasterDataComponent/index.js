@@ -198,6 +198,7 @@ const columns = [
     headerName: "ซื้อ",
     field: "orderedQty",
     width: 120,
+    // แสดงผล
     renderCell: (params) => (
       <div>
         {params.row.inventoryUOMID === "" ? (

@@ -10,6 +10,7 @@ import JournalTableComponent from "./JournalTableComponent";
 import AccountSummaryComponent from "./JournalSummaryComponent";
 import JournalTemplateComponent from "./JournalTemplateComponent";
 import { getRemarkTemplate } from "../../../../adapter/Api";
+// import { TurnLeft } from "@mui/icons-material";
 
 export default function JournalEntryInfo({ add }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,23 +28,32 @@ export default function JournalEntryInfo({ add }) {
   // const dispatch = useDispatch();
 
   useEffect(() => {
+    let isMounted = true;
+    
     const getRemarks = getRemarkTemplate();
     Promise.all([getRemarks])
       .then((values) => {
-        if (values[0].data.status === "success") {
+        if (isMounted && values[0].data.status === "success") {
           let myData = values[0].data.data;
           setAllTemplate(myData);
         }
       })
       .catch((err) => {
-        console.log(err);
-        setIsLoading(false);
+        if (isMounted) {
+          console.log(err);
+          setIsLoading(false);
+        }
       });
     if (!add) {
-      setIsLoading(false);
-      setJournalAccount(initialValues);
+      if (isMounted) {
+        setIsLoading(false);
+        setJournalAccount(initialValues);
+      }
     }
     setIsLoading(false);
+    return () => {
+      isMounted = false;
+    }
   }, [add]);
 
   const formik = useFormik({

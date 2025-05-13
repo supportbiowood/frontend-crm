@@ -21,7 +21,7 @@ export default function SelectCustom({
 }) {
   return (
     <FormControl size="small" fullWidth disabled={disabled} error={errors}>
-      <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+      <InputLabel id={`${id}-label`}>{label}</InputLabel>
       <Select
         id={id}
         name={name}
@@ -29,10 +29,13 @@ export default function SelectCustom({
         label={label}
         onChange={onChange}
         sx={sx}
+        labelId={`${id}-label`}
       >
         {options &&
           options.map((option) => {
-            return <MenuItem value={option.id}>{option.name}</MenuItem>;
+            return <MenuItem key={option.id} value={option.id}>
+              {option.name}
+            </MenuItem>;
           })}
       </Select>
       <FormHelperText>{helperText}</FormHelperText>

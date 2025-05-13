@@ -8,7 +8,7 @@ import { createOption } from "../Utils";
 let BASE_URL;
 if (process.env.REACT_APP_ENVIRONMENT.trim() === "development") {
   // BASE_URL = "https://api-dev.biowoodthailand.com/v1";
-  BASE_URL = "http://localhost:8080/v1"; // สำหรับพัฒนาในเครื่อง
+  BASE_URL = "http://47.129.207.245:8080/v1"; // สำหรับพัฒนาในเครื่อง
   console.log("running on development");
 } else if (process.env.REACT_APP_ENVIRONMENT.trim() === "production") {
   BASE_URL = "https://api.biowoodthailand.com/v1"; // สำหรับการใช้งานจริง
@@ -24,10 +24,14 @@ function returnAxiosInstance() {
   // Setting headers for authorization. You can do this in instances or interceptors
   // https://stackoverflow.com/questions/45578844/how-to-set-header-and-options-in-axios
   const accessToken = getToken();
+  console.log("accessToken ที่ได้จาก localStorage คือ:", accessToken);
   if (accessToken) {
     // Set for all requests (common) , or should we just do for post?
+    console.log("Access Token being used:", accessToken);
     axiosInstance.defaults.headers.common["Authorization"] =
       "Bearer " + accessToken;
+  } else {
+    console.error("No Access Token found!");
   }
   return axiosInstance;
 }
@@ -60,7 +64,7 @@ async function checkToken() {
   }
 
   if (exp && exp <= moment().tz("Asia/Bangkok").unix()) {
-    console.log("Expired token");
+    console.log("Expired token", moment(exp * 1000).format());
     removeUserSession();
     window.location.href = "/login";
     return false;
@@ -90,12 +94,16 @@ export function get(url) {
 
 export function post(url, requestData) {
   if (!checkToken()) return;
+  console.log("POST TO:", url);
+  console.log("REQUEST DATA:", requestData);
   const axios = returnAxiosInstance();
   return axios.post(url, requestData);
 }
 
 export function update(url, requestData) {
   if (!checkToken()) return;
+  console.log("URL:", url);
+  console.log("Request Data:", requestData);
   const axios = returnAxiosInstance();
   return axios.put(url, requestData);
 }
@@ -212,6 +220,7 @@ export function updateContact(input, id) {
 }
 
 export function updateProject(input, id) {
+  console.log("Update Project Input:", input);
   return update(`/project/${id}`, input);
 }
 

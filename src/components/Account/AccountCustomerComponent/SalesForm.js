@@ -581,8 +581,8 @@ export default function SalesForm({
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
             {allAddress &&
-            allAddress.some(
-              address => address.address_name.trim().length > 0
+            allAddress?.some(
+              address => address?.address_name.trim().length > 0
             ) ? (
               <FormControl fullWidth size="small">
                 <InputLabel disabled={disabled} id="billing_info.address_name">
@@ -593,16 +593,16 @@ export default function SalesForm({
                   labelId="billing_info.address_name"
                   id="billing_info.address_name"
                   name="billing_info.address_name"
-                  value={formik.values.billing_info.address_name}
+                  value={formik.values.billing_info.address_name || ""}
                   label="ที่อยู่"
                   onChange={getAddressInformation}
                 >
-                  {allAddress.map((address) => (
+                  {(allAddress || []).map((address) => (
                     <MenuItem
-                      key={address.address_id}
-                      value={address.address_name}
+                      key={address?.address_id}
+                      value={address?.address_name}
                     >
-                      {address.address_name}
+                      {address?.address_name || "ไม่มีที่อยู่"}
                     </MenuItem>
                   ))}
                 </Select>

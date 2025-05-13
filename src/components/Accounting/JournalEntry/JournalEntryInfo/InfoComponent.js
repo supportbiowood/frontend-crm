@@ -30,6 +30,8 @@ export default function InfoComponent({ disabled, values, formik }) {
     },
   ];
 
+  const accountJournalTypeValue = values.account_journal_ref_type || "";
+
   return (
     <>
       <h3>สมุดบัญชี</h3>
@@ -42,7 +44,7 @@ export default function InfoComponent({ disabled, values, formik }) {
               label="สมุดบัญชี"
               disabled={disabled}
               options={options}
-              value={values.account_journal_ref_type}
+              value={accountJournalTypeValue}
               onChange={handleChange}
             />
           </Grid>
@@ -52,7 +54,7 @@ export default function InfoComponent({ disabled, values, formik }) {
               name="account_journal_ref_desciption"
               label="คำอธิบาย"
               disabled={disabled}
-              values={values.account_journal_ref_desciption}
+              values={values.account_journal_ref_desciption || ""}
             />
           </Grid>
         </Grid>
@@ -67,7 +69,7 @@ export default function InfoComponent({ disabled, values, formik }) {
               label="ผู้ติดต่อ"
               disabled={disabled}
               options={[]}
-              values={values.account_journal_ref_contact}
+              values={values.account_journal_ref_contact || null}
               onChange={handleChange}
             />
           </Grid>

@@ -444,7 +444,7 @@ export default function MovementComponent(props) {
                 รายละเอียด : {data.activity_data.description} เมื่อวันที่{" "}
                 {moment(
                   data.activity_data.project_status_log
-                    ._project_status_log_created,
+                    ?._project_status_log_created,
                   "X"
                 )
                   .tz("Asia/Bangkok")
@@ -781,9 +781,9 @@ export default function MovementComponent(props) {
                     sorting(e.target.value, values);
                   }}
                 >
-                  {options.map((option, i) => {
+                  {options.map((option) => {
                     return (
-                      <MenuItem value={option.name} key={i}>
+                      <MenuItem value={option.name} key={option.name}>
                         {option.name}
                       </MenuItem>
                     );
@@ -804,9 +804,9 @@ export default function MovementComponent(props) {
                     filter(e.target.value);
                   }}
                 >
-                  {optionstwo.map((option, i) => {
+                  {optionstwo.map((option) => {
                     return (
-                      <MenuItem value={option.value} key={i}>
+                      <MenuItem value={option.value} key={option.value}>
                         {option.name}
                       </MenuItem>
                     );
@@ -817,12 +817,15 @@ export default function MovementComponent(props) {
           </div>
 
           <div>
-            {values &&
+            {values && values.length > 0 ? (
               values.map((val, index) => {
-                return renderActivity(val);
-              })}
-            {values && values.length === 0 && <h3>"ไม่พบรายการ"</h3>}
+                return <div key={val.id || index}>{renderActivity(val)}</div>;  // ใช้ val.id หรือ index ถ้าไม่มี id
+              })
+            ) : (
+              <h3>"ไม่พบรายการ"</h3>
+            )}
           </div>
+
         </Form>
       )}
     </Formik>
