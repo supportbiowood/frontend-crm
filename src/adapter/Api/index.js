@@ -8,7 +8,7 @@ import { createOption } from "../Utils";
 let BASE_URL;
 if (process.env.REACT_APP_ENVIRONMENT.trim() === "development") {
   // BASE_URL = "https://api-dev.biowoodthailand.com/v1";
-  BASE_URL = "http://47.129.207.245:8080/v1"; // สำหรับพัฒนาในเครื่อง
+  BASE_URL = "http://localhost:8080/v1"; // สำหรับพัฒนาในเครื่อง
   console.log("running on development");
 } else if (process.env.REACT_APP_ENVIRONMENT.trim() === "production") {
   BASE_URL = "https://api.biowoodthailand.com/v1"; // สำหรับการใช้งานจริง
@@ -18,23 +18,24 @@ if (process.env.REACT_APP_ENVIRONMENT.trim() === "development") {
 function returnAxiosInstance() {
   const axiosInstance = axios.create({
     baseURL: BASE_URL,
-    // timeout: 1000 * 20 // default is `0` (no timeout) 20 seconds 1000*20
   });
 
-  // Setting headers for authorization. You can do this in instances or interceptors
-  // https://stackoverflow.com/questions/45578844/how-to-set-header-and-options-in-axios
-  const accessToken = getToken();
-  console.log("accessToken ที่ได้จาก localStorage คือ:", accessToken);
-  if (accessToken) {
-    // Set for all requests (common) , or should we just do for post?
-    console.log("Access Token being used:", accessToken);
-    axiosInstance.defaults.headers.common["Authorization"] =
-      "Bearer " + accessToken;
-  } else {
-    console.error("No Access Token found!");
-  }
+  // ✅ Add a request interceptor
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      const token = getToken(); // ดึงใหม่ทุกครั้ง
+      console.log("Token:", token);
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
+
   return axiosInstance;
 }
+
 
 // check token
 async function checkToken() {
@@ -99,6 +100,7 @@ export function post(url, requestData) {
   const axios = returnAxiosInstance();
   return axios.post(url, requestData);
 }
+
 
 export function update(url, requestData) {
   if (!checkToken()) return;

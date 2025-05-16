@@ -15,12 +15,23 @@ export const getExp = () => {
 };
 
 export const setUserSession = (accessToken, user) => {
-  localStorage.setItem("accessToken", accessToken);
-  const user_jwt = jwt(accessToken);
-  const exp = user_jwt.exp;
-  localStorage.setItem("user", JSON.stringify(user));
-  localStorage.setItem("exp", exp);
+  try {
+    console.log("=== setUserSession called ===");
+    console.log("accessToken >>", accessToken);
+    console.log("user >>", user);
+
+    localStorage.setItem("accessToken", accessToken);
+
+    const user_jwt = jwt(accessToken); // จุดเสี่ยง ถ้า accessToken ไม่ใช่ JWT ที่ถูกต้อง
+    const exp = user_jwt.exp;
+
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("exp", exp);
+  } catch (err) {
+    console.error("Error in setUserSession:", err);
+  }
 };
+
 
 export const removeUserSession = () => {
   localStorage.removeItem("accessToken");

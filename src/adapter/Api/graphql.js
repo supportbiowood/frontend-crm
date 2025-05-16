@@ -58,7 +58,7 @@ import {
   deleteUOM,
 } from "./mutation";
 
-export const BASE_URL = `http://localhost:8080/graphql`;
+export const BASE_URL = `http://47.129.207.245:8080/graphql`;
 
 function returnAxiosInstance() {
   const axiosInstance = axios.create({
