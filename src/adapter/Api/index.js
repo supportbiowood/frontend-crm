@@ -107,7 +107,14 @@ export function update(url, requestData) {
   console.log("URL:", url);
   console.log("Request Data:", requestData);
   const axios = returnAxiosInstance();
-  return axios.put(url, requestData);
+  if (requestData instanceof FormData) {
+    return axios.put(url, requestData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  }
+  
 }
 
 export function remove(url) {

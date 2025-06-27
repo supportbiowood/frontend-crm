@@ -103,13 +103,13 @@ export default function Attachment(props) {
               ) : (
                 props.values.attachment_list?.map((val, index) => {
                   return (
-                    <div>
+                    <div key={`AttachmentFile-${val.attachment_file_name}-${index}`}>
                       <Link
                         to={{ pathname: val.attachment_url }}
                         target="_blank"
                       >
                         <CardContactAttachment
-                          key={"AttachmentFile =" + val.attachment_file_name}
+                          
                           topic={val.attachment_file_name}
                           size="style.small"
                           ID={index}
