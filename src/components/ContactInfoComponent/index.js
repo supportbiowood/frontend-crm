@@ -202,9 +202,20 @@ export default function ContactInfoComponent(props) {
             }));
           }
           if (data.data.data.contact_address_list && data.data.data.contact_address_list.length > 0) {
+            const cleanedList = data.data.data.contact_address_list.map((item) => ({
+              ...item,
+              address_name: item?.address_name ?? '',
+              building: item?.building ?? '',
+              road: item?.road ?? '',
+              sub_district: item?.sub_district ?? '',
+              district: item?.district ?? '',
+              province: item?.province ?? '',
+              country: item?.country ?? '',
+              postal_code: item?.postal_code ?? '',
+            }));
             setMyValue((prev) => ({
               ...prev,
-              contact_address_list: data.data.data.contact_address_list,
+              contact_address_list: cleanedList,
             }));
           }
           if (data.data.data.contact_is_customer === 1) {

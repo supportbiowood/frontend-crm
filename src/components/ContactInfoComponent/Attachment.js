@@ -25,13 +25,16 @@ export default function Attachment(props) {
       const file = files[0];
       uploadFileToS3(file, "CRM", "test")
         .then((data) => {
-          const Clone = props.values.attachment_list;
-          Clone.push({
-            attachment_file_name: file.name,
-            attachment_file_type: file.type,
-            attachment_url: data.Location,
-          });
-          props.setFieldValue("attachment_list", Clone);
+          const cleanedList = [
+            ...props.values.attachment_list,
+            {
+              attachment_file_name: file?.name ?? '',
+              attachment_file_type: file?.type ?? '',
+              attachment_url: data?.Location ?? '',
+            },
+          ];
+
+          props.setFieldValue("attachment_list", cleanedList);
         })
         .catch((err) => {
           console.log(err);
@@ -40,11 +43,10 @@ export default function Attachment(props) {
   };
 
   const deleteData = (ID) => {
-    const Clone = [...props.values.attachment_list];
-    const deleteValue = Clone.filter((val, index) => {
-      return `${ID}` !== `${index}`;
-    });
-    props.setFieldValue("attachment_list", deleteValue);
+    const cleanedList = props.values.attachment_list?.filter(
+      (_, index) => `${ID}` !== `${index}`
+    );
+    props.setFieldValue("attachment_list", cleanedList);
   };
 
   return (
@@ -64,7 +66,6 @@ export default function Attachment(props) {
         <AccordionDetails>
           <div>
             <div className="attachment-card__upload-btn">
-              {/* <input id="fileUpload" name="fileUpload" onChange={handleInputFile} ref={inputFile} hidden type="file" /> */}
               <input
                 type="file"
                 id="file"
@@ -83,28 +84,28 @@ export default function Attachment(props) {
             </div>
             <div className="grid-container-25">
               {props.values.attachment_list?.map((val, index) => (
-                <div>
-                  <Link to={{ pathname: val.attachment_url }} target="_blank">
+                <div key={index}>
+                   <Link to={{ pathname: val.attachment_url ?? ''}} target="_blank">
                     <CardContactAttachment
-                      key={"AttachmentFile =" + val.attachment_file_name}
-                      topic={val.attachment_file_name}
+                      key={"AttachmentFile =" + (val?.attachment_file_name ?? '')}
+                      topic={val?.attachment_file_name ?? ''} // fallback '' if null
                       size="style.small"
                       ID={index}
                       values={props.values}
                       setFieldValue={props.setFieldValue}
                     />
-                  </Link>
-                  <div
-                    className="attachment-delete-btn"
-                    onClick={(e) => {
-                      if (window.confirm("ต้องการลบไฟล์นี้ใช่หรือไม่"))
-                        deleteData(index);
-                    }}
-                  >
-                    ลบ
-                  </div>
-                </div>
-              ))}
+                   </Link>
+                   <div
+                     className="attachment-delete-btn"
+                     onClick={(e) => {
+                       if (window.confirm("ต้องการลบไฟล์นี้ใช่หรือไม่"))
+                         deleteData(index);
+                     }}
+                   >
+                     ลบ
+                   </div>
+                 </div>
+               ))}
             </div>
           </div>
         </AccordionDetails>
