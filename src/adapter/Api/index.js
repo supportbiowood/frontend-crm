@@ -103,7 +103,9 @@ export function post(url, requestData) {
 
 
 export function update(url, requestData) {
-  if (!checkToken()) return;
+  if (!checkToken()) {
+    return Promise.reject("Token invalid or expired");
+  }
   console.log("URL:", url);
   console.log("Request Data:", requestData);
   const axios = returnAxiosInstance();
@@ -114,7 +116,7 @@ export function update(url, requestData) {
       },
     });
   }
-  
+  return axios.put(url, requestData);
 }
 
 export function remove(url) {

@@ -36,6 +36,21 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import { styled } from "@mui/material/styles";
 
+// function cleanPayload(payload){
+//   const cleaned = {};
+
+//   object.entries(payload).forEach(([key, value]) => {
+//     if(
+//       value !== null &&
+//       value !== "" &&
+//       !(Array.isArray(value) && value.length === 0)
+//     ) {
+//       cleaned[key] = value;
+//     }
+//   });
+//   return cleaned;
+// }
+
 export default function ProjectInfoComponent(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -387,9 +402,11 @@ export default function ProjectInfoComponent(props) {
             warranty_list: values.warranty_list,
             attachment_list: values.attachment_list,
           };
+          // const cleanedData = cleanPayload(prepare_update_data);
+
           console.log("prepare_update_data", prepare_update_data);
           setIsLoading(true);
-          updateProject(prepare_update_data, values.project_id)
+           return updateProject(prepare_update_data, values.project_id)
             .then((data) => {
               if (data.data.status === "success") {
                 dispatch(showSnackbar("success", "บันทึกสำเร็จ"));
@@ -402,7 +419,7 @@ export default function ProjectInfoComponent(props) {
               setIsLoading(false);
               dispatch(showSnackbar("error", `${err}` || "บันทึกล้มเหลว"));
             });
-          return;
+          // return;
         }}
       >
         {({
